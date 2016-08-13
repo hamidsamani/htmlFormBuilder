@@ -1,0 +1,7 @@
+.form-group
+    = "\n"
+    if attributes.label
+        label('for' = attributes.label) #{attributes.label}
+        = "\n"
+    input.form-control&attributes(attributes)
+    = "\n"

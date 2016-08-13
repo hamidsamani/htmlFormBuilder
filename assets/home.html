@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Generator</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+          rel="stylesheet"/>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
+          rel="stylesheet"/>
+    <style>
+        .container .box {
+            margin: 2px;
+            padding: 5px;
+        }
+
+        /*Fade all the DIV when user hovers on any div*/
+        .container:hover .box {
+            zoom: 1;
+            filter: alpha(opacity=45);
+            opacity: 0.45;
+            -webkit-transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -ms-transition: opacity .5s ease-in-out;
+            -o-transition: opacity .5s ease-in-out;
+            transition: opacity .5s ease-in-out;
+        }
+
+        /*Fade out the particular DIV when user hover on that DIV*/
+        .container .box:hover {
+            box-shadow: 3px 3px 15px #666;
+            border-color: #D9D9D9;
+            background: #D9D9D9;
+            color: #fff;
+            cursor: pointer;
+            zoom: 1;
+            filter: alpha(opacity=100);
+            opacity: 1;
+        }
+
+        .remove {
+            float: right;
+        }
+
+    </style>
+
+</head>
+<body ng-app="builder">
+<div class="container"
+     ng-controller="ModalCreatorController">
+    <div class="page-header">
+        <h1>HTML Form Builder</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <uib-tabset active="input">
+                <uib-tab index="0">
+                    <uib-tab-heading>
+                        Input elements <i class="glyphicon glyphicon-pencil"></i>
+                    </uib-tab-heading>
+
+                    <div>
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="open()">Small modal
+                        </button>
+                    </div>
+
+                </uib-tab>
+                <uib-tab index="2">
+                    <uib-tab-heading>
+                        Output elements <i class="glyphicon glyphicon-bell"></i>
+                    </uib-tab-heading>
+                </uib-tab>
+                <uib-tab index="3">
+                    <uib-tab-heading>
+                        Directives <i class="glyphicon glyphicon-bell"></i>
+                    </uib-tab-heading>
+                    I've got an HTML heading, and a select callback. Pretty cool!
+                </uib-tab>
+            </uib-tabset>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div>
+                    <p>Preview</p>
+                </div>
+                <div class="box"
+                     ng-repeat="elem in html">
+                    <div class="btn-group remove"
+                         role="group">
+
+                        <button class="btn-group btn-danger"
+                                type="button"
+                                ng-click="remove($index)">
+                            <span class="glyphicon glyphicon-trash"/>
+                        </button>
+                        <button class="btn-group btn-primary"
+                                type="button"
+                                ng-click="moveUp($index)">
+                            <span class="glyphicon glyphicon-menu-up"/>
+                        </button>
+                        <button class="btn-group btn-primary"
+                                type="button"
+                                ng-click="moveDown($index)">
+                            <span class="glyphicon glyphicon-menu-down"/>
+                        </button>
+                    </div>
+                    <div ng-bind-html="elem"/>
+
+                </div>
+            </div>
+            <div class="row">
+                <uib-tabset active="code">
+                    <uib-tab index="0">
+                        <uib-tab-heading>
+                            HTML code
+                        </uib-tab-heading>
+                        <figure class="highlight">
+                    <pre><code class="language-html"
+                               data-lang="html">{{rawText}}</code></pre>
+                        </figure>
+
+                    </uib-tab>
+                    <uib-tab>
+                        <uib-tab-heading>
+                            JS code
+                        </uib-tab-heading>
+                    </uib-tab>
+
+                </uib-tabset>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/services/HtmlAttributeResolverService.js"></script>
+<script src="js/services/HtmlRendererService.js"></script>
+<script src="js/controllers/ModalCreatorController.js"></script>
+<script src="js/controllers/ModalInstanceController.js"></script>
+<script type="text/ng-template"
+        id="modalDialog.html">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            {{element}}
+        </h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group"
+             ng-repeat="attr in resolvedAttrs">
+            <label>{{attr}}</label>
+            <input class="form-control"
+                   ng-model="attributes[attr]"
+                   type="text">
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary"
+                type="button"
+                ng-click="ok()">OK
+        </button>
+        <button class="btn btn-warning"
+                type="button"
+                ng-click="cancel()">Cancel
+        </button>
+    </div>
+</script>
+</body>
+</html>
