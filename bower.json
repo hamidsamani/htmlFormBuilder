@@ -1,0 +1,22 @@
+{
+  "name": "vtFormBuilder",
+  "version": "0.0.0",
+  "authors": [
+    "Hamid Samani <hamid1129@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "angular": "~1.5.8",
+    "angular-sanitize": "~1.5.8",
+    "angular-bootstrap": "~2.0.1",
+    "angular-mocks": "~1.5.8"
+  }
+}

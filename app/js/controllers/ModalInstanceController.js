@@ -5,8 +5,10 @@
             $scope.element = element;
             $scope.resolvedAttrs = HtmlAttributeResolver.getAttributes(element);
             $scope.attributes = {};
+            $scope.resolvedDafaults = HtmlAttributeResolver.getDefaultAttributeValues(element);
 
             $scope.ok = function () {
+                console.log($scope.attributes);
                 $uibModalInstance.close($scope.attributes);
             };
             $scope.cancel = function () {

@@ -6,14 +6,14 @@
                                                                                                   $uibModal,
                                                                                                   HtmlRendererService,
                                                                                                   $sce) {
+            $scope.formElements = HtmlAttributeResolver.getFormElements();
             $scope.html = [];
-            $scope.element = 'input'; //mock change it later
-            $scope.open = function () {
+            $scope.open = function (elem) {
+                console.log(elem);
+                $scope.element = elem;
                 var modalInstance = $uibModal.open({
-                    animation: $scope.animationsEnabled,
                     templateUrl: 'modalDialog.html',
                     controller: 'ModalInstanceController',
-                    size: 'sm',
                     resolve: {
                         element: function () {
                             return $scope.element;
@@ -49,6 +49,7 @@
                     var current = $scope.html.splice(index, 1);
                     $scope.html.splice(index + 1, 0, $sce.trustAsHtml(current.join('')));
                     updateRawCode();
+
                 }
 
             };

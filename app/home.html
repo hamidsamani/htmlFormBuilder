@@ -57,32 +57,28 @@
             <uib-tabset active="input">
                 <uib-tab index="0">
                     <uib-tab-heading>
-                        Input elements <i class="glyphicon glyphicon-pencil"></i>
+                        Form Elements <i class="glyphicon glyphicon-eye-open"></i>
                     </uib-tab-heading>
-
-                    <div>
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="open()">Small modal
-                        </button>
-                    </div>
+                    <div ng-include="'tabs/form-elements.html'"></div>
 
                 </uib-tab>
                 <uib-tab index="2">
                     <uib-tab-heading>
-                        Output elements <i class="glyphicon glyphicon-bell"></i>
-                    </uib-tab-heading>
-                </uib-tab>
-                <uib-tab index="3">
-                    <uib-tab-heading>
                         Directives <i class="glyphicon glyphicon-bell"></i>
+                    </uib-tab-heading>
+                    I've got an HTML heading, and a select callback. Pretty cool!
+                </uib-tab>
+                <uib-tab index="4">
+                    <uib-tab-heading>
+                        Code Snippets <i class="glyphicon glyphicon-bell"></i>
                     </uib-tab-heading>
                     I've got an HTML heading, and a select callback. Pretty cool!
                 </uib-tab>
             </uib-tabset>
         </div>
         <div class="col-md-6">
-            <div class="row">
+            <div class="row"
+                 ng-if="html.length">
                 <div>
                     <p>Preview</p>
                 </div>
@@ -97,11 +93,13 @@
                             <span class="glyphicon glyphicon-trash"/>
                         </button>
                         <button class="btn-group btn-primary"
+                                ng-if="html.length>1"
                                 type="button"
                                 ng-click="moveUp($index)">
                             <span class="glyphicon glyphicon-menu-up"/>
                         </button>
                         <button class="btn-group btn-primary"
+                                ng-if="html.length>1"
                                 type="button"
                                 ng-click="moveDown($index)">
                             <span class="glyphicon glyphicon-menu-down"/>
@@ -123,7 +121,7 @@
                         </figure>
 
                     </uib-tab>
-                    <uib-tab>
+                    <uib-tab disable="true">
                         <uib-tab-heading>
                             JS code
                         </uib-tab-heading>
@@ -143,6 +141,7 @@
 <script src="js/services/HtmlRendererService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
+<script src="js/constants/constants.js"></script>
 <script type="text/ng-template"
         id="modalDialog.html">
     <div class="modal-header">
@@ -150,13 +149,22 @@
             {{element}}
         </h3>
     </div>
-    <div class="modal-body">
+    <div class="modal-body pre-scrollable">
         <div class="form-group"
              ng-repeat="attr in resolvedAttrs">
             <label>{{attr}}</label>
-            <input class="form-control"
+            <input ng-if="!resolvedDafaults[attr]"
+                   class="form-control"
                    ng-model="attributes[attr]"
                    type="text">
+            <select ng-if="resolvedDafaults[attr].length"
+                    ng-model="attributes[attr]"
+                    class="form-control">
+                <option selected
+                        ng-repeat="val in resolvedDafaults[attr]"
+                        value="{{val}}">{{val}}
+                </option>
+            </select>
         </div>
     </div>
 
