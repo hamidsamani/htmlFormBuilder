@@ -1,7 +1,3 @@
-.form-group
-    = "\n"
-    if attributes.label
-        label('for' = attributes.label) #{attributes.label}
-        = "\n"
+include ./includes/formgroup
     input&attributes(attributes)
     = "\n"

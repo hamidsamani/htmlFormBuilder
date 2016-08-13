@@ -28,5 +28,23 @@ angular.module('builder').constant('elements',
             defaults: {
                 type: ['checkbox']
             }
+        },
+        textarea: {
+            element: 'textarea',
+            attributes: [
+                'id',
+                'class',
+                'name',
+                'rows',
+                'required',
+                'ng-model',
+                'ng-minlength',
+                'ng-maxlength',
+                'ng-pattern',
+                'ng-change',
+                'ng-trim'],
+            defaults: {
+                required: [true, false]
+            }
         }
     });
