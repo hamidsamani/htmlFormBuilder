@@ -6,6 +6,9 @@
                                                                                                   $uibModal,
                                                                                                   HtmlRendererService,
                                                                                                   $sce) {
+            $scope.$watchCollection('html', function () {
+                $scope.rawText = $scope.html.join('');
+            });
             $scope.formElements = HtmlAttributeResolver.getFormElements();
             $scope.miscellaneous = HtmlAttributeResolver.getMiscellaneousElements();
             $scope.uibootstrap = HtmlAttributeResolver.getUibootstrapElements();
@@ -30,7 +33,6 @@
                     HtmlRendererService.renderHtmlForElement(element).then(onSuccess, angular.noop());
                     function onSuccess(data) {
                         $scope.html.push($sce.trustAsHtml(data.data));
-                        updateRawCode();
                     }
                 });
 
@@ -43,23 +45,15 @@
                 if (index > 0) {
                     var current = $scope.html.splice(index, 1);
                     $scope.html.splice(index - 1, 0, $sce.trustAsHtml(current.join('')));
-                    updateRawCode();
                 }
             };
             $scope.moveDown = function (index) {
                 if (index < $scope.html.length) {
                     var current = $scope.html.splice(index, 1);
                     $scope.html.splice(index + 1, 0, $sce.trustAsHtml(current.join('')));
-                    updateRawCode();
 
                 }
 
             };
-            function updateRawCode() {
-                $scope.rawText = $scope.html.join('');
-            }
-
-
-        }
-        ]);
+        }]);
 })();
