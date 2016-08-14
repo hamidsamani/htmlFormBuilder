@@ -45,9 +45,10 @@
     </style>
 
 </head>
-<body ng-app="builder">
-<div class="container"
-     ng-controller="ModalCreatorController">
+<body ng-app="builder"
+      ng-controller="ModalCreatorController">
+<div ng-include="'tabs/navbar.html'"></div>
+<div class="container">
     <div class="page-header">
         <h1>HTML Form Builder</h1>
     </div>
@@ -63,6 +64,11 @@
 
                 </uib-tab>
                 <uib-tab index="1">
+                    <uib-tab-heading>
+                        AngularUI boostrap <i class="glyphicon glyphicon-bell"></i>
+                    </uib-tab-heading>
+                </uib-tab>
+                <uib-tab index="2">
                     <uib-tab-heading>
                         Miscellaneous<i class="glyphicon glyphicon-eye-open"></i>
                     </uib-tab-heading>
@@ -137,6 +143,8 @@
     </div>
 
 </div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
