@@ -7,6 +7,7 @@
                                                                                                   HtmlRendererService,
                                                                                                   $sce) {
             $scope.formElements = HtmlAttributeResolver.getFormElements();
+            $scope.miscellaneous = HtmlAttributeResolver.getMiscellaneousElements();
             $scope.html = [];
             $scope.open = function (elem) {
                 console.log(elem);

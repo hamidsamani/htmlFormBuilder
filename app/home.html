@@ -62,17 +62,21 @@
                     <div ng-include="'tabs/form-elements.html'"></div>
 
                 </uib-tab>
+                <uib-tab index="1">
+                    <uib-tab-heading>
+                        Miscellaneous<i class="glyphicon glyphicon-eye-open"></i>
+                    </uib-tab-heading>
+                    <div ng-include="'tabs/miscellaneous.html'"></div>
+                </uib-tab>
                 <uib-tab index="2">
                     <uib-tab-heading>
                         Directives <i class="glyphicon glyphicon-bell"></i>
                     </uib-tab-heading>
-                    I've got an HTML heading, and a select callback. Pretty cool!
                 </uib-tab>
-                <uib-tab index="4">
+                <uib-tab index="3">
                     <uib-tab-heading>
                         Code Snippets <i class="glyphicon glyphicon-bell"></i>
                     </uib-tab-heading>
-                    I've got an HTML heading, and a select callback. Pretty cool!
                 </uib-tab>
             </uib-tabset>
         </div>
@@ -141,7 +145,8 @@
 <script src="js/services/HtmlRendererService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
-<script src="js/constants/constants.js"></script>
+<script src="js/constants/form-elements.js"></script>
+<script src="js/constants/miscellaneous.js"></script>
 <script type="text/ng-template"
         id="modalDialog.html">
     <div class="modal-header">
