@@ -8,6 +8,7 @@
                                                                                                   $sce) {
             $scope.formElements = HtmlAttributeResolver.getFormElements();
             $scope.miscellaneous = HtmlAttributeResolver.getMiscellaneousElements();
+            $scope.uibootstrap = HtmlAttributeResolver.getUibootstrapElements();
             $scope.html = [];
             $scope.open = function (elem) {
                 console.log(elem);

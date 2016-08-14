@@ -1,11 +1,13 @@
 (function () {
     'use strict';
-    angular.module('builder').factory('HtmlAttributeResolver', function (elements, miscellaneous) {
+    angular.module('builder').factory('HtmlAttributeResolver', function (elements, miscellaneous, uibootstrap) {
         function findElementCategory(element) {
             if (Object.keys(elements).indexOf(element) != -1) {
                 return elements[element];
             } else if (Object.keys(miscellaneous).indexOf(element) != -1) {
                 return miscellaneous[element];
+            } else if (Object.keys(uibootstrap).indexOf(element) != -1) {
+                return uibootstrap[element];
             }
 
         }
@@ -22,6 +24,9 @@
             },
             getMiscellaneousElements: function () {
                 return Object.keys(miscellaneous);
+            },
+            getUibootstrapElements: function () {
+                return Object.keys(uibootstrap);
             }
         }
     })
