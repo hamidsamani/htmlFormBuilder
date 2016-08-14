@@ -2,9 +2,9 @@ angular.module('builder').constant('elements',
     {
         input: {
             element: 'input',
-            attributes: ['id', 'type', 'name', 'ng-model', 'class', 'placeholder',
+            attributes: ['id', 'type', 'label', 'name', 'ng-model', 'class', 'placeholder',
                 'required', 'ng-minlength', 'ng-maxlength', 'ng-pattern',
-                'ng-trim', 'ng-change', 'ng-click', 'label'],
+                'ng-trim', 'ng-change', 'ng-click'],
             defaults: {
                 type: ['password',
                     'hidden',
