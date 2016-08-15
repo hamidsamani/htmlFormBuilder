@@ -8,6 +8,8 @@
 
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
           rel="stylesheet"/>
+    <link href="bower_components/highlightjs/styles/default.css"
+          rel="stylesheet"/>
     <style>
         .container .box {
             margin: 2px;
@@ -61,7 +63,7 @@
         <div>
             <div class="col-md-6">
                 <div>
-                    <h4>Code</h4>
+                    <h4><b>Code</b></h4>
                 </div>
                 <uib-tabset active="code">
                     <uib-tab index="0">
@@ -69,8 +71,7 @@
                             HTML code
                         </uib-tab-heading>
                         <figure class="highlight">
-                    <pre><code class="language-html"
-                               data-lang="html">{{rawText}}</code></pre>
+                            <pre><code>{{rawText}}</code></pre>
                         </figure>
 
                     </uib-tab>
@@ -84,7 +85,7 @@
             </div>
             <div class="col-md-6">
                 <div>
-                    <h4>Preview</h4>
+                    <h4><b>Preview</b></h4>
                 </div>
                 <div class="box"
                      ng-repeat="elem in html">
@@ -99,13 +100,13 @@
                         <button class="btn-group btn-primary"
                                 ng-if="html.length>1"
                                 type="button"
-                                ng-click="moveUp($index)">
+                                ng-click="moveup($index)">
                             <span class="glyphicon glyphicon-menu-up"/>
                         </button>
                         <button class="btn-group btn-primary"
                                 ng-if="html.length>1"
                                 type="button"
-                                ng-click="moveDown($index)">
+                                ng-click="movedown($index)">
                             <span class="glyphicon glyphicon-menu-down"/>
                         </button>
                     </div>
