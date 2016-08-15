@@ -53,44 +53,33 @@
         <h1>HTML Form Builder</h1>
     </div>
     <div class="row">
-        <div class="col-md-6">
-
-            <uib-tabset active="input">
-                <uib-tab index="0">
-                    <uib-tab-heading>
-                        Form Elements <i class="glyphicon glyphicon-eye-open"></i>
-                    </uib-tab-heading>
-                    <div ng-include="'tabs/form-elements.html'"></div>
-
-                </uib-tab>
-                <uib-tab index="1">
-                    <uib-tab-heading>
-                        AngularUI boostrap <i class="glyphicon glyphicon-bell"></i>
-                    </uib-tab-heading>
-                </uib-tab>
-                <uib-tab index="2">
-                    <uib-tab-heading>
-                        Miscellaneous<i class="glyphicon glyphicon-eye-open"></i>
-                    </uib-tab-heading>
-                    <div ng-include="'tabs/miscellaneous.html'"></div>
-                </uib-tab>
-                <uib-tab index="2">
-                    <uib-tab-heading>
-                        Directives <i class="glyphicon glyphicon-bell"></i>
-                    </uib-tab-heading>
-                </uib-tab>
-                <uib-tab index="3">
-                    <uib-tab-heading>
-                        Code Snippets <i class="glyphicon glyphicon-bell"></i>
-                    </uib-tab-heading>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-        <div class="col-md-6">
-            <div class="row"
-                 ng-if="html.length">
+        <div>
+            <div class="col-md-6">
                 <div>
-                    <p>Preview</p>
+                    <h4>Code</h4>
+                </div>
+                <uib-tabset active="code">
+                    <uib-tab index="0">
+                        <uib-tab-heading>
+                            HTML code
+                        </uib-tab-heading>
+                        <figure class="highlight" onmouseup="alert(window.getSelection().toString());">
+                    <pre><code class="language-html"
+                               data-lang="html">{{rawText}}</code></pre>
+                        </figure>
+
+                    </uib-tab>
+                    <uib-tab disable="true">
+                        <uib-tab-heading>
+                            JS code
+                        </uib-tab-heading>
+                    </uib-tab>
+
+                </uib-tabset>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h4>Preview</h4>
                 </div>
                 <div class="box"
                      ng-repeat="elem in html">
@@ -118,26 +107,6 @@
                     <div ng-bind-html="elem"/>
 
                 </div>
-            </div>
-            <div class="row">
-                <uib-tabset active="code">
-                    <uib-tab index="0">
-                        <uib-tab-heading>
-                            HTML code
-                        </uib-tab-heading>
-                        <figure class="highlight">
-                    <pre><code class="language-html"
-                               data-lang="html">{{rawText}}</code></pre>
-                        </figure>
-
-                    </uib-tab>
-                    <uib-tab disable="true">
-                        <uib-tab-heading>
-                            JS code
-                        </uib-tab-heading>
-                    </uib-tab>
-
-                </uib-tabset>
             </div>
         </div>
     </div>
