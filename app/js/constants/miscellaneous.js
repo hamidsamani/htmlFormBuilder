@@ -1,6 +1,7 @@
 angular.module('builder').constant('miscellaneous', {
     table: {
         element: 'table',
-        attributes: ['ng-repeat', 'columns']
+        attributes: ['ng-repeat', 'columns'],
+        required:[]
     }
 });

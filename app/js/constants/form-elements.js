@@ -13,7 +13,8 @@ angular.module('builder').constant('elements',
                     'datetime-local',
                     'input'],
                 required: [true, false]
-            }
+            },
+            required: []
         },
         button: {
             element: 'button',
@@ -21,7 +22,8 @@ angular.module('builder').constant('elements',
             attributes: ['id', 'type', 'class', 'ng-click'],
             defaults: {
                 type: ['button', 'reset', 'submit']
-            }
+            },
+            required: []
         },
         checkbox: {
             element: 'input',
@@ -30,7 +32,8 @@ angular.module('builder').constant('elements',
                 'ng-true-value', 'ng-false-value', 'ng-change'],
             defaults: {
                 type: ['checkbox']
-            }
+            },
+            required: []
         },
         textarea: {
             element: 'textarea',
@@ -50,6 +53,7 @@ angular.module('builder').constant('elements',
                 'ng-trim'],
             defaults: {
                 required: [true, false]
-            }
+            },
+            required: []
         }
     });

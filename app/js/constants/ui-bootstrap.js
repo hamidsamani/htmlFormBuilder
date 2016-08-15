@@ -1,7 +1,8 @@
 angular.module('builder').constant('uibootstrap', {
-    alert: {
-        element: 'alert',
+    uiAlert: {
+        element: 'uiAlert',
         attributes: ['class', 'ng-class', 'close', 'template-url'],
-        vars: ['text']
+        vars: ['text'],
+        required: ['text']
     }
 });

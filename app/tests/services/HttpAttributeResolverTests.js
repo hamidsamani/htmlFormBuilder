@@ -12,6 +12,6 @@ describe('HttpAttributeResolverTests', function () {
         expect(service.getAttributes('table')).toEqual(['ng-repeat', 'columns']);
     });
     it('uibootstrap attributes retrieve as expected', function () {
-        expect(service.getAttributes('alert')).toEqual(['class', 'ng-class', 'close', 'template-url']);
+        expect(service.getAttributes('uiAlert')).toEqual(['class', 'ng-class', 'close', 'template-url']);
     })
 });

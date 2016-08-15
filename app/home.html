@@ -28,9 +28,9 @@
 
         /*Fade out the particular DIV when user hover on that DIV*/
         .container .box:hover {
-            box-shadow: 3px 3px 15px #666;
-            border-color: #D9D9D9;
-            background: #D9D9D9;
+            box-shadow: 3px 3px 15px #a8a8a8;
+            border-color: #efefef;
+            background: #e8e8e8;
             color: #fff;
             cursor: pointer;
             zoom: 1;
@@ -40,6 +40,11 @@
 
         .remove {
             float: right;
+        }
+
+        .required:after {
+            color: red;
+            content: " *";
         }
 
     </style>
@@ -63,8 +68,7 @@
                         <uib-tab-heading>
                             HTML code
                         </uib-tab-heading>
-                        <figure class="highlight"
-                                onmouseup="alert(window.getSelection().toString());">
+                        <figure class="highlight">
                     <pre><code class="language-html"
                                data-lang="html">{{rawText}}</code></pre>
                         </figure>
@@ -123,6 +127,7 @@
 <script src="js/services/HtmlRendererService.js"></script>
 <script src="js/services/HtmlElementFinderService.js"></script>
 <script src="js/services/HtmlVariableResovlerService.js"></script>
+<script src="js/services/HtmlRequiredAttributesResolverService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
 <script src="js/constants/form-elements.js"></script>
@@ -136,30 +141,42 @@
         </h3>
     </div>
     <div class="modal-body pre-scrollable">
-        <div class="form-group"
-             ng-repeat="attr in resolvedAttrs">
-            <label>{{attr}}</label>
-            <input ng-if="!resolvedDafaults[attr]"
-                   class="form-control"
-                   ng-model="element.properties.attributes[attr]"
-                   type="text">
-            <select ng-if="resolvedDafaults[attr].length"
-                    ng-model="element.properties.attributes[attr]"
-                    class="form-control">
-                <option selected
-                        ng-repeat="val in resolvedDafaults[attr]"
-                        value="{{val}}">{{val}}
-                </option>
-            </select>
-        </div>
-        <div class="form-group"
-             ng-repeat="var in resolvedVars">
-            <label>{{var}}</label>
-            <input class="form-control"
-                   type="text"
-                   ng-model="element.properties.variables[var]"/>
+        <form name="form">
+            <div class="form-group"
+                 ng-repeat="attr in resolvedAttrs">
+                <label for="{{attr}}"
+                       ng-class="{'required' : isRequired(attr)}">{{attr}}</label>
+                <input id="{{attr}}"
+                       name="{{attr}}"
+                       required="isRequired(attr)"
+                       ng-if="!resolvedDafaults[attr]"
+                       class="form-control"
+                       ng-model="element.properties.attributes[attr]"
+                       type="text">
+                <select id="{{attr}}"
+                        name="{{attr}}"
+                        required="isRequired(attr)"
+                        ng-if="resolvedDafaults[attr].length"
+                        ng-model="element.properties.attributes[attr]"
+                        class="form-control">
+                    <option selected
+                            ng-repeat="val in resolvedDafaults[attr]"
+                            value="{{val}}">{{val}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group"
+                 ng-repeat="var in resolvedVars">
+                <label ng-class="{'required' : isRequired(var)}"
+                       for="{{var}}">{{var}}</label>
+                <input class="form-control"
+                       id="{{var}}"
+                       required="isRequired(var)"
+                       type="text"
+                       ng-model="element.properties.variables[var]"/>
 
-        </div>
+            </div>
+        </form>
     </div>
 
     <div class="modal-footer">
