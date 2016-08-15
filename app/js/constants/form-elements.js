@@ -16,7 +16,7 @@ angular.module('builder').constant('elements',
         },
         button: {
             element: 'button',
-            attributes: ['id', 'type', 'class'],
+            attributes: ['id', 'type', 'class','text','ng-click'],
             defaults: {
                 type: ['button', 'reset', 'submit']
             }
