@@ -7,7 +7,7 @@ module.exports = function (config) {
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'app/js/**/*.js',
-            'app/tests/*.js'
+            'app/tests/**/*.js'
 
         ],
         exclude: [],
