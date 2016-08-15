@@ -1,6 +1,6 @@
 table.table
-    tr&attributes(attributes)
-    - for (var i = 0; i <= attributes.columns ; ++i) {
+    tr&attributes(properties.attributes)
+    - for (var i = 0; i <= properties.attributes.columns ; ++i) {
         = "\n"
         td {{}}
     - }

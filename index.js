@@ -13,10 +13,9 @@ app.get('/tabs/:filename', function (req, res) {
     res.sendFile(path.join(__dirname + '/app/tabs/' + req.params.filename));
 });
 app.post('/widgets', function (req, res) {
-    console.log(req.body);
     res.render(req.body.element, req.body);
 });
 
 app.listen(3000, function () {
-    console.log('Form Generator App Started...');
+    console.log('Form Builder App Started...');
 });

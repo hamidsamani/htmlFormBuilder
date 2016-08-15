@@ -1,41 +1,33 @@
 (function () {
     'use strict';
     angular.module('builder').controller('ModalCreatorController',
-        ['$scope', 'HtmlAttributeResolver', '$uibModal', 'HtmlRendererService', '$sce', function ($scope,
-                                                                                                  HtmlAttributeResolver,
-                                                                                                  $uibModal,
-                                                                                                  HtmlRendererService,
-                                                                                                  $sce) {
+        ['$scope', 'HtmlElementFinder', '$uibModal', 'HtmlRendererService', '$sce', function ($scope,
+                                                                                              HtmlElementFinder,
+                                                                                              $uibModal,
+                                                                                              HtmlRendererService,
+                                                                                              $sce) {
             $scope.$watchCollection('html', function () {
                 $scope.rawText = $scope.html.join('');
             });
-            $scope.formElements = HtmlAttributeResolver.getFormElements();
-            $scope.miscellaneous = HtmlAttributeResolver.getMiscellaneousElements();
-            $scope.uibootstrap = HtmlAttributeResolver.getUibootstrapElements();
+            $scope.formElements = HtmlElementFinder.getFormElements();
+            $scope.miscellaneous = HtmlElementFinder.getMiscellaneousElements();
+            $scope.uibootstrap = HtmlElementFinder.getUibootstrapElements();
             $scope.html = [];
             $scope.open = function (elem) {
-                console.log(elem);
-                $scope.element = elem;
                 var modalInstance = $uibModal.open({
                     templateUrl: 'modalDialog.html',
                     controller: 'ModalInstanceController',
                     resolve: {
                         element: function () {
-                            return $scope.element;
+                            return elem;
                         }
                     }
                 });
-                modalInstance.result.then(function (attributes) {
-                    var element = {
-                        element: $scope.element,
-                        attributes: attributes
-                    };
-                    HtmlRendererService.renderHtmlForElement(element).then(onSuccess, angular.noop());
-                    function onSuccess(data) {
+                modalInstance.result.then(function (element) {
+                    HtmlRendererService.renderHtmlForElement(element).then(function (data) {
                         $scope.html.push($sce.trustAsHtml(data.data));
-                    }
+                    });
                 });
-
             };
             $scope.remove = function (index) {
                 $scope.html.splice(index, 1);

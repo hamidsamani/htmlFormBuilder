@@ -2,6 +2,7 @@ angular.module('builder').constant('elements',
     {
         input: {
             element: 'input',
+            vars: [],
             attributes: ['id', 'type', 'label', 'name', 'ng-model', 'class', 'placeholder',
                 'required', 'ng-minlength', 'ng-maxlength', 'ng-pattern',
                 'ng-trim', 'ng-change', 'ng-click'],
@@ -16,13 +17,15 @@ angular.module('builder').constant('elements',
         },
         button: {
             element: 'button',
-            attributes: ['id', 'type', 'class','text','ng-click'],
+            vars: ['text'],
+            attributes: ['id', 'type', 'class', 'ng-click'],
             defaults: {
                 type: ['button', 'reset', 'submit']
             }
         },
         checkbox: {
             element: 'input',
+            vars: [],
             attributes: ['id', 'type', 'name', 'ng-model', 'label',
                 'ng-true-value', 'ng-false-value', 'ng-change'],
             defaults: {
@@ -31,9 +34,11 @@ angular.module('builder').constant('elements',
         },
         textarea: {
             element: 'textarea',
+            vars: [],
             attributes: [
                 'id',
                 'class',
+                'label',
                 'name',
                 'rows',
                 'required',

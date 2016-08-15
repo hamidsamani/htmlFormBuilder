@@ -63,7 +63,8 @@
                         <uib-tab-heading>
                             HTML code
                         </uib-tab-heading>
-                        <figure class="highlight" onmouseup="alert(window.getSelection().toString());">
+                        <figure class="highlight"
+                                onmouseup="alert(window.getSelection().toString());">
                     <pre><code class="language-html"
                                data-lang="html">{{rawText}}</code></pre>
                         </figure>
@@ -120,6 +121,8 @@
 <script src="js/builder.js"></script>
 <script src="js/services/HtmlAttributeResolverService.js"></script>
 <script src="js/services/HtmlRendererService.js"></script>
+<script src="js/services/HtmlElementFinderService.js"></script>
+<script src="js/services/HtmlVariableResovlerService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
 <script src="js/constants/form-elements.js"></script>
@@ -129,7 +132,7 @@
         id="modalDialog.html">
     <div class="modal-header">
         <h3 class="modal-title">
-            {{element}}
+            {{elementName}}
         </h3>
     </div>
     <div class="modal-body pre-scrollable">
@@ -138,16 +141,24 @@
             <label>{{attr}}</label>
             <input ng-if="!resolvedDafaults[attr]"
                    class="form-control"
-                   ng-model="attributes[attr]"
+                   ng-model="element.properties.attributes[attr]"
                    type="text">
             <select ng-if="resolvedDafaults[attr].length"
-                    ng-model="attributes[attr]"
+                    ng-model="element.properties.attributes[attr]"
                     class="form-control">
                 <option selected
                         ng-repeat="val in resolvedDafaults[attr]"
                         value="{{val}}">{{val}}
                 </option>
             </select>
+        </div>
+        <div class="form-group"
+             ng-repeat="var in resolvedVars">
+            <label>{{var}}</label>
+            <input class="form-control"
+                   type="text"
+                   ng-model="element.properties.variables[var]"/>
+
         </div>
     </div>
 
