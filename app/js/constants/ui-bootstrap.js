@@ -8,7 +8,7 @@ angular.module('builder').constant('uibootstrap', {
     uiModal: {
         element: 'Modal Template',
         attributes: ['id'],
-        vars: ['text'],
+        vars: ['text','controller'],
         required: ['id', 'text']
     }
 });

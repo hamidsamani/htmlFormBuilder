@@ -1,12 +1,14 @@
 (function () {
     'use strict';
     angular.module('builder').controller('ModalCreatorController',
-        ['$scope', 'HtmlElementFinder',
-            '$uibModal', 'HtmlRendererService', '$sce',
+        ['$scope', 'HtmlElementFinder', 'HtmlFileDownloaderService',
+            '$uibModal', 'HtmlRendererService', 'JsRendererService', '$sce',
             function ($scope,
                       HtmlElementFinder,
+                      HtmlFileDownloaderService,
                       $uibModal,
                       HtmlRendererService,
+                      JsRendererService,
                       $sce) {
 
                 $scope.$watchCollection('html', function () {
@@ -27,11 +29,21 @@
                         }
                     });
                     modalInstance.result.then(function (element) {
+                        console.log(element);
                         HtmlRendererService.renderHtmlForElement(element).then(function (data) {
                             $scope.html.push($sce.trustAsHtml(data.data));
                         });
+                        JsRendererService.renderJsForElement(element).then(function (data) {
+                            $scope.jsText = $sce.trustAsJs(data.data);
+
+                        });
                     });
                 };
+
+                $scope.download = function () {
+                    HtmlFileDownloaderService.downloadAsHtmlFile($scope.rawText);
+                };
+
                 $scope.remove = function (index) {
                     $scope.html.splice(index, 1);
                     $scope.rawText = $scope.html.join('');

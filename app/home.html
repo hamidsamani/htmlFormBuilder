@@ -8,8 +8,6 @@
 
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
           rel="stylesheet"/>
-    <link href="bower_components/highlightjs/styles/default.css"
-          rel="stylesheet"/>
     <style>
         .container .box {
             margin: 2px;
@@ -75,13 +73,22 @@
                         </figure>
 
                     </uib-tab>
-                    <uib-tab disable="true">
+                    <uib-tab index="1">
                         <uib-tab-heading>
                             JS code
                         </uib-tab-heading>
+                        <figure class="highlight">
+                            <pre><code>{{jsText}}</code></pre>
+                        </figure>
                     </uib-tab>
 
                 </uib-tabset>
+                <!--<div class="form-group">-->
+                <!--<button type="button"-->
+                <!--class="btn btn-primary"-->
+                <!--ng-click="download()">Download-->
+                <!--</button>-->
+                <!--</div>-->
             </div>
             <div class="col-md-6">
                 <div>
@@ -126,9 +133,11 @@
 <script src="js/builder.js"></script>
 <script src="js/services/HtmlAttributeResolverService.js"></script>
 <script src="js/services/HtmlRendererService.js"></script>
+<script src="js/services/JsRendererService.js"></script>
 <script src="js/services/HtmlElementFinderService.js"></script>
 <script src="js/services/HtmlVariableResovlerService.js"></script>
 <script src="js/services/HtmlRequiredAttributesResolverService.js"></script>
+<script src="js/services/HtmlFileDownladerService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
 <script src="js/constants/form-elements.js"></script>
