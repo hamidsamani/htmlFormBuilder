@@ -1,11 +1,10 @@
 (function () {
     'use strict';
     angular.module('builder').controller('ModalCreatorController',
-        ['$scope', 'HtmlElementFinder', 'HtmlFileDownloaderService',
+        ['$scope', 'HtmlElementFinder',
             '$uibModal', 'HtmlRendererService', 'JsRendererService', '$sce',
             function ($scope,
                       HtmlElementFinder,
-                      HtmlFileDownloaderService,
                       $uibModal,
                       HtmlRendererService,
                       JsRendererService,
@@ -41,7 +40,13 @@
                 };
 
                 $scope.download = function () {
-                    HtmlFileDownloaderService.downloadAsHtmlFile($scope.rawText);
+                    saveAs(
+                        new Blob(
+                            [$scope.html.join('')]
+                            , {type: "application/xhtml+xml;charset=" + document.characterSet}
+                        )
+                        , "index.html"
+                    );
                 };
 
                 $scope.remove = function (index) {

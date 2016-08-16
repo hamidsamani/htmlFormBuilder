@@ -19,9 +19,6 @@ app.post('/widgets', function (req, res) {
 app.post('/scripts', function (req, res) {
     res.render(req.body.element + '-js', req.body);
 });
-// app.post('/getfile', function (req, res) {
-//     res.send(res);
-// });
 
 app.listen(3000, function () {
     console.log('Form Builder App Started...');

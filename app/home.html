@@ -71,7 +71,14 @@
                         <figure class="highlight">
                             <pre><code>{{rawText}}</code></pre>
                         </figure>
-
+                        <div class="form-group">
+                            <button type="button"
+                                    ng-click="download()"
+                                    class="btn btn-primary">
+                                <span class="glyphicon glyphicon-floppy-disk"/>
+                                Download
+                            </button>
+                        </div>
                     </uib-tab>
                     <uib-tab index="1">
                         <uib-tab-heading>
@@ -83,12 +90,7 @@
                     </uib-tab>
 
                 </uib-tabset>
-                <!--<div class="form-group">-->
-                <!--<button type="button"-->
-                <!--class="btn btn-primary"-->
-                <!--ng-click="download()">Download-->
-                <!--</button>-->
-                <!--</div>-->
+
             </div>
             <div class="col-md-6">
                 <div>
@@ -130,6 +132,7 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="js/lib/fileSaver.js"></script>
 <script src="js/builder.js"></script>
 <script src="js/services/HtmlAttributeResolverService.js"></script>
 <script src="js/services/HtmlRendererService.js"></script>
@@ -137,7 +140,6 @@
 <script src="js/services/HtmlElementFinderService.js"></script>
 <script src="js/services/HtmlVariableResovlerService.js"></script>
 <script src="js/services/HtmlRequiredAttributesResolverService.js"></script>
-<script src="js/services/HtmlFileDownladerService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
 <script src="js/constants/form-elements.js"></script>
