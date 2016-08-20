@@ -58,22 +58,11 @@
                             [data.data]
                             , {type: "application/xhtml+xml;charset=" + document.characterSet}
                         )
-                        , filename + ".html"
+                        , (filename || 'index') + ".html"
                     );
                 });
 
             };
-            $scope.downloadjs = function () {
-                saveAs(
-                    new Blob(
-                        [$scope.js.join('')]
-                        , {type: "application/xhtml+xml;charset=" + document.characterSet}
-                    )
-                    , "index.html"
-                );
-
-            };
-
             $scope.remove = function (index) {
                 $scope.html.splice(index, 1);
                 $scope.rawHtml = $scope.html.join('');

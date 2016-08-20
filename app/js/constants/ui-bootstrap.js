@@ -8,7 +8,13 @@ angular.module('builder').constant('uibootstrap', {
     uiModal: {
         element: 'Modal Template',
         attributes: ['id'],
-        vars: ['text','controller'],
+        vars: ['text', 'controller'],
         required: ['id', 'text']
+    },
+    uiCollapse: {
+        element: 'Collapse',
+        attributes: ['uib-collapse'],
+        vars: ['content'],
+        required: ['uib-collapse']
     }
 });
