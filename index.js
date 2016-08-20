@@ -4,10 +4,14 @@ var app = express();
 app.use(bodyParser.json());
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/js', express.static(__dirname + '/app/js'));
+app.use('/assets/img', express.static(__dirname + '/app/assets/img'));
 app.set('view engine', 'pug');
 app.set('views', ['./app/htmlTemplates', './app/jsTemplates']);
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/app' + '/home.html'));
+});
+app.get('/help', function (req, res) {
+    res.sendFile(path.join(__dirname + '/app' + '/help.html'));
 });
 app.get('/tabs/:filename', function (req, res) {
     res.sendFile(path.join(__dirname + '/app/tabs/' + req.params.filename));

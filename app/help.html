@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Builder Help</title>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>Any Element is Missing?</h1> here you can learn how to add that element
+    </div>
+    <div class="row">
+        <h2>Addition of element require two steps:</h2>
+        <ul>
+            <li>Adding element definition object</li>
+            <li>Adding element jade/pug template file</li>
+        </ul>
+    </div>
+    <div class="row">
+        <h3>Adding element definition object</h3>
+        <p>For defining element object, just define required attributes of element inside any related constant file.
+           constant files placed in <code>/js/constant</code> folder
+        </p>
+        <p>
+            Every element should have this properties:
+        <ul>
+            <li><code>element [string]</code></li>
+            <li><code>attributes [array]</code></li>
+            <li><code>defaults [object]</code></li>
+            <li><code>vars [array]</code></li>
+            <li><code>required [array]</code></li>
+        </ul>
+        Also notice element root peoperty should be element name also (it's uses as template name also).
+        </p>
+        <p>
+            for example definition of button could be:
+        </p>
+        <img src="assets/img/btn-do.png"
+             width="300">
+        <p>
+            with this definition modal dialog automatically will be create with the following structure:
+        </p>
+        <img src="assets/img/btn-modal.png"
+             width="350">
+    </div>
+    <div class="row">
+        <h3>Adding element jade/pug template file</h3>
+        <p>After creating the object definition take a look at <a href="http://jade-lang.com/reference/"
+                                                                  target="_blank">jade user
+                                                                                  guide</a>
+           and create template file</p>
+        <p>template file should be placed in <code>/app/htmlTemplates</code> folder, notice that template file name
+           should be equal to element name in element definition object.</p>
+        <p>also notice that if any element has related js script, put scripts in <code>/app/jsTemplates</code> folder.
+           file name should be element name followed by <code>-js</code>.
+           for example <code>uiModal.pug</code> script tag will be <code>uiModal-js.pug</code>
+        </p>
+    </div>
+</div>
+</body>
+</html>
