@@ -20,7 +20,7 @@ app.post('/scripts', function (req, res) {
     res.render(req.body.element + '-js', req.body);
 });
 app.post('/templates', function (req, res) {
-    res.render(req.body.element, req.body);
+    res.render(req.body.template, req.body);
 });
 
 app.listen(3000, function () {

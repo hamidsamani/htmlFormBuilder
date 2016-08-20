@@ -2,28 +2,31 @@ if properties.surounds.doctype
     doctype html
 if properties.surounds.html
     html
-        if properties.surounds.head
+        if properties.surounds.head || elements.js
             head
+                if elements.js
+                    | !{elements.js}
+
         if properties.surounds.body
             body
                 if properties.surounds.form
                     form
-                        | !{elements}
+                        | !{elements.html}
                 else
-                    | !{elements}
+                    | !{elements.html}
 
         else
             if properties.surounds.form
                 form
-                    | !{elements}
+                    | !{elements.html}
             else
-                | !{elements}
+                | !{elements.html}
 else
     if properties.surounds.form
         form
-            | !{elements}
+            | !{elements.html}
     else
-        | !{elements}
+        | !{elements.html}
 
 
 

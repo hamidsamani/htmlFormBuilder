@@ -52,7 +52,7 @@
             };
 
             $scope.downloadhtml = function (filename) {
-                DecorateFileForDownloadService.decorateWithOptions($scope.html, $scope.options).then(function (data) {
+                DecorateFileForDownloadService.decorateWithOptions($scope.html, $scope.js, $scope.options).then(function (data) {
                     saveAs(
                         new Blob(
                             [data.data]
