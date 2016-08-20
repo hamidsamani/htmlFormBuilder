@@ -69,15 +69,54 @@
                             HTML code
                         </uib-tab-heading>
                         <figure class="highlight">
-                            <pre><code>{{rawText}}</code></pre>
+                            <pre><code>{{rawHtml}}</code></pre>
                         </figure>
-                        <div class="form-group">
-                            <button type="button"
-                                    ng-click="download()"
-                                    class="btn btn-primary">
-                                <span class="glyphicon glyphicon-floppy-disk"/>
-                                Download
-                            </button>
+                        <div class="col-md-12"
+                             style="padding-left: 0px;">
+                            <form class="form-inline">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="options.doctype"/> doctype
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="options.html"/> html
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="options.head"/> head
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="options.body"/> body
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="options.form"/> form
+                                    </label>
+                                </div>
+                            </form>
+                            <div class="input-group">
+                                <input type="text"
+                                       placeholder="Html filename"
+                                       ng-model="htmlfilename"
+                                       class="form-control">
+                                <span class="input-group-btn">
+                                <button class="btn btn-primary"
+                                        ng-click="downloadhtml(htmlfilename)"
+                                        type="button">
+                                    <span class="glyphicon glyphicon-floppy-disk"></span>Download</span>
+                                </button>
+                            </div>
                         </div>
                     </uib-tab>
                     <uib-tab index="1">
@@ -85,7 +124,7 @@
                             JS code
                         </uib-tab-heading>
                         <figure class="highlight">
-                            <pre><code>{{jsText}}</code></pre>
+                            <pre><code>{{rawJs}}</code></pre>
                         </figure>
                     </uib-tab>
 
@@ -97,7 +136,7 @@
                     <h4><b>Preview</b></h4>
                 </div>
                 <div class="box"
-                     ng-repeat="elem in html">
+                     ng-repeat="elem in html track by $index">
                     <div class="btn-group remove"
                          role="group">
 
@@ -140,6 +179,7 @@
 <script src="js/services/HtmlElementFinderService.js"></script>
 <script src="js/services/HtmlVariableResovlerService.js"></script>
 <script src="js/services/HtmlRequiredAttributesResolverService.js"></script>
+<script src="js/services/DecorateFileForDownloadService.js"></script>
 <script src="js/controllers/ModalCreatorController.js"></script>
 <script src="js/controllers/ModalInstanceController.js"></script>
 <script src="js/constants/form-elements.js"></script>

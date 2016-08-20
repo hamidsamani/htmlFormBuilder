@@ -19,6 +19,9 @@ app.post('/widgets', function (req, res) {
 app.post('/scripts', function (req, res) {
     res.render(req.body.element + '-js', req.body);
 });
+app.post('/templates', function (req, res) {
+    res.render(req.body.element, req.body);
+});
 
 app.listen(3000, function () {
     console.log('Form Builder App Started...');

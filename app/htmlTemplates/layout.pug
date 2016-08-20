@@ -1,0 +1,35 @@
+if properties.surounds.doctype
+    doctype html
+if properties.surounds.html
+    html
+        if properties.surounds.head
+            head
+        if properties.surounds.body
+            body
+                if properties.surounds.form
+                    form
+                        | !{elements}
+                else
+                    | !{elements}
+
+        else
+            if properties.surounds.form
+                form
+                    | !{elements}
+            else
+                | !{elements}
+else
+    if properties.surounds.form
+        form
+            | !{elements}
+    else
+        | !{elements}
+
+
+
+
+
+
+
+
+
